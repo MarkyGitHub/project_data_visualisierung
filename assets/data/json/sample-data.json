@@ -1,0 +1,181 @@
+{
+    "dataItems": [
+      {
+        "id": 1,
+        "type": "numerical",
+        "title": "Monthly Sales Trends",
+        "description": "Sales performance over the past year",
+        "dataPoints": [
+          { "date": "2023-01", "value": 2000 },
+          { "date": "2023-02", "value": 2200 },
+          { "date": "2023-03", "value": 1800 },
+          { "date": "2023-04", "value": 2500 }
+        ],
+        "visualizationType": "line_chart",
+        "sourceUrl": "https://example.com/sales-data",
+        "thumbnail": "https://picsum.photos/id/1011/300/200"
+      },
+      {
+        "id": 2,
+        "type": "text",
+        "title": "Customer Feedback Analysis",
+        "description": "Sentiment analysis on recent customer reviews",
+        "contentType": "reviews",
+        "keywords": ["positive", "delivery", "quality"],
+        "sourceUrl": "https://example.com/feedback-data",
+        "thumbnail": "https://picsum.photos/id/1012/300/200"
+      },
+      {
+        "id": 3,
+        "type": "image",
+        "title": "Product Image - Model X",
+        "description": "High-resolution image of Model X in black color",
+        "imageUrl": "https://picsum.photos/id/1013/600/400",
+        "annotations": ["high_resolution", "annotated"],
+        "sourceUrl": "https://example.com/product/model-x",
+        "thumbnail": "https://picsum.photos/id/1013/300/200"
+      },
+      {
+        "id": 4,
+        "type": "video",
+        "title": "Tutorial on Product Usage",
+        "description": "A step-by-step guide on using Product X",
+        "videoUrl": "https://example.com/videos/tutorial.mp4",
+        "duration": "10:35",
+        "sourceUrl": "https://example.com/tutorials/product-x",
+        "thumbnail": "https://picsum.photos/id/1014/300/200"
+      },
+      {
+        "id": 5,
+        "type": "ai_result",
+        "title": "Sentiment Analysis of Reviews",
+        "description": "AI model outputs sentiment scores for customer reviews",
+        "modelType": "sentiment_analysis",
+        "results": [
+          { "review": "Great product!", "sentiment": "positive", "confidence": 0.95 },
+          { "review": "Poor service", "sentiment": "negative", "confidence": 0.85 },
+          { "review": "Average experience", "sentiment": "neutral", "confidence": 0.75 }
+        ],
+        "sourceUrl": "https://example.com/models/sentiment-analysis",
+        "thumbnail": "https://picsum.photos/id/1015/300/200"
+      },
+      {
+        "id": 6,
+        "type": "numerical",
+        "title": "Website Traffic Over Time",
+        "description": "Traffic data showing daily visitors over the last quarter",
+        "dataPoints": [
+          { "date": "2023-07-01", "value": 1500 },
+          { "date": "2023-07-02", "value": 1600 },
+          { "date": "2023-07-03", "value": 1700 },
+          { "date": "2023-07-04", "value": 1750 }
+        ],
+        "visualizationType": "bar_chart",
+        "sourceUrl": "https://example.com/traffic-data",
+        "thumbnail": "https://picsum.photos/id/1016/300/200"
+      },
+      {
+        "id": 7,
+        "type": "text",
+        "title": "Product Reviews Analysis",
+        "description": "Analysis of customer reviews across various product categories. Analysis of customer reviews across various product categories Analysis of customer reviews across various product categories Analysis of customer reviews across various product categories",
+        "contentType": "reviews",
+        "keywords": ["positive", "value", "quality"],
+        "sourceUrl": "https://example.com/review-data",
+        "thumbnail": "https://picsum.photos/id/26/4209/2769"
+      },
+      {
+        "id": 8,
+        "type": "image",
+        "title": "Warehouse Layout",
+        "description": "Annotated image showing the layout of the main warehouse",
+        "imageUrl": "https://picsum.photos/id/1018/600/400",
+        "annotations": ["layout", "sections", "zones"],
+        "sourceUrl": "https://example.com/warehouse-layout",
+        "thumbnail": "https://picsum.photos/id/1018/300/200"
+      },
+      {
+        "id": 9,
+        "type": "video",
+        "title": "Product Unboxing Video",
+        "description": "Unboxing and first impressions of the latest product release",
+        "videoUrl": "https://example.com/videos/unboxing.mp4",
+        "duration": "8:20",
+        "sourceUrl": "https://example.com/unboxing",
+        "thumbnail": "https://picsum.photos/id/1019/300/200"
+      },
+      {
+        "id": 10,
+        "type": "ai_result",
+        "title": "Image Classification Results",
+        "description": "AI model results for classifying images into categories",
+        "modelType": "image_classification",
+        "results": [
+          { "image": "https://picsum.photos/id/1020/600/400", "category": "electronics", "confidence": 0.88 },
+          { "image": "https://picsum.photos/id/1021/600/400", "category": "furniture", "confidence": 0.92 }
+        ],
+        "sourceUrl": "https://example.com/models/image-classification",
+        "thumbnail": "https://picsum.photos/id/1020/300/200"
+      },
+      {
+        "id": 11,
+        "type": "numerical",
+        "title": "Quarterly Revenue Growth",
+        "description": "Comparison of revenue growth over the last four quarters",
+        "dataPoints": [
+          { "quarter": "Q1", "value": 500000 },
+          { "quarter": "Q2", "value": 550000 },
+          { "quarter": "Q3", "value": 600000 },
+          { "quarter": "Q4", "value": 650000 }
+        ],
+        "visualizationType": "line_chart",
+        "sourceUrl": "https://example.com/revenue-data",
+        "thumbnail": "https://picsum.photos/id/1022/300/200"
+      },
+      {
+        "id": 12,
+        "type": "text",
+        "title": "Social Media Sentiment",
+        "description": "Real-time analysis of sentiment on social media for the brand",
+        "contentType": "social_media",
+        "keywords": ["positive", "brand", "engagement"],
+        "sourceUrl": "https://example.com/social-sentiment",
+        "thumbnail": "https://picsum.photos/id/1023/300/200"
+      },
+      {
+        "id": 13,
+        "type": "image",
+        "title": "Event Venue Map",
+        "description": "Detailed map of the event venue with section labels",
+        "imageUrl": "https://picsum.photos/id/1024/600/400",
+        "annotations": ["entrance", "stage", "seating"],
+        "sourceUrl": "https://example.com/venue-map",
+        "thumbnail": "https://picsum.photos/id/1024/300/200"
+      },
+      {
+        "id": 14,
+        "type": "video",
+        "title": "How-to Guide for Product Setup",
+        "description": "Step-by-step video tutorial for setting up the product",
+        "videoUrl": "https://example.com/videos/setup-guide.mp4",
+        "duration": "12:45",
+        "sourceUrl": "https://example.com/product-setup",
+        "thumbnail": "https://picsum.photos/id/1025/300/200"
+      },
+      {
+        "id": 15,
+        "type": "ai_result",
+        "title": "Object Detection Results",
+        "description": "Object detection results showing identified objects in images",
+        "modelType": "object_detection",
+        "results": [
+          { "object": "person", "confidence": 0.97 },
+          { "object": "car", "confidence": 0.88 },
+          { "object": "bicycle", "confidence": 0.92 }
+        ],
+        "sourceUrl": "https://example.com/models/object-detection",
+        "thumbnail": "https://picsum.photos/id/1026/300/200"
+      }
+    ]
+  }
+  

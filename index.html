@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <header>
+       <!-- Main Content -->
+       <h1 data-translate="dashboardTitle">Dashboard</h1>      
+    </header>
+    <main>
+     <!-- Theme and Language Selectors -->
+     <div class="selectors">
+      <select id="themeSelector" onchange="switchTheme(this.value)">
+        <option value="theme-default">Default</option>
+        <option value="theme-dark">Dark</option>
+        <option value="theme-light">Light</option>
+        <option value="theme-minimal">Minimal</option>
+        <option value="theme-borderless">Borderless</option>
+        <option value="theme-bootstrap">Bootstrap 4</option>
+        <option value="theme-wordpress">WordPress</option>
+      </select>
+
+      <select id="languageSelector" onchange="switchLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="de">Deutsch</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
+      <br /><br />
+       <!-- Filter Dropdown -->
+  <label for="type-filter">Filter by Type:</label>
+  <select id="type-filter" onchange="filterCards()">
+    <option value="all">All</option>
+    <option value="numerical">Numerical</option>
+    <option value="text">Text</option>
+    <option value="image">Image</option>
+    <option value="video">Video</option>
+    <option value="ai_result">AI Result</option>
+  </select>
+
+<!-- Title Search Input -->
+<label for="title-search">Search by Title:</label>
+<input type="text" id="title-search" oninput="filterCardsByTitle()" placeholder="Enter title to search...">
+<button id="sort-button" onclick="toggleSort()">Sort by Title: A-Z</button>
+
+  <br />
+      <div id="data-cards-container" class="data-grid">
+        <!-- Cards will be dynamically inserted here by JavaScript -->
+      </div>
+      
+        <!-- Repeat for other data items -->
+      </div>
+    </main>
+    <footer>
+      <button data-translate="addVisualizationButton">
+        Add New Visualization
+      </button>
+    </footer>
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>
