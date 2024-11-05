@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Only load data items if #data-cards-container is present (i.e., on index.html)
   if (document.querySelector("#data-cards-container")) {
-    loadDataItems();
+    loadJsonDataItems();
   }
 });
 
@@ -48,7 +48,7 @@ const handleLoadedData = (evt) => {
   }
 };
 
-const loadDataItems = () => {
+const loadJsonDataItems = () => {
   const xhr = new XMLHttpRequest();
   xhr.open('GET', './assets/data/json/sample-data.json', true); // Adjust the path as needed
   xhr.addEventListener('load', handleLoadedData);
