@@ -1,74 +1,110 @@
 "use strict";
 
-// Apply saved theme and language on load
-document.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("selectedTheme") || "theme-default";
-  const savedLanguage = localStorage.getItem("selectedLanguage") || "en";
+import render from "./render.js";
+import settings, { elements } from "./settings.js";
+let dataId = parseInt(settings.urlParams.get("id")) || 1; 
+let currentIndex = 0;
 
-  switchTheme(savedTheme);
-  switchLanguage(savedLanguage);
-  fetchDataItem();
-});
+// FUNKTIONEN
+const domMapping = () => {
+  elements.elSelThem = document.querySelector("#theme-selector");
+  elements.elSelLang = document.querySelector("#language-selector");
+  elements.nextButton = document.querySelector("#next-button");
+  elements.prevButton = document.querySelector("#prev-button");
+  elements.backButton = document.querySelector("#back-to-list");
+};
 
-// Get data item ID from URL parameters, or use 1 as the default if no ID is provided
-const urlParams = new URLSearchParams(window.location.search);
-let dataId = urlParams.get("id") || "1"; // Default to ID 1 if no ID is provided
+// Auf die Start Seite gehen
+const navigateBackToList = () => {
+  window.location.href = "index.html";
+};
 
-// Fetch and display the specific data item based on its ID
-const fetchDataItem = async () => {
+// JSON Daten laden und den eintrag mit der ID anzeigen
+const fetchDataItems = async () => {
   try {
-    const response = await fetch("assets/data/json/sample-data.json");
+    const response = await fetch(settings.jsonData);
     const data = await response.json();
-    let dataItem = data.dataItems.find(item => item.id == dataId);
-
-    // If the specified item is not found, load the default item with ID 1
-    if (!dataItem) {
-      console.warn(`Data item with ID ${dataId} not found. Loading default item with ID 1.`);
-      dataItem = data.dataItems.find(item => item.id == "1");
+    elements.allDataItems = data.dataItems;
+    
+    currentIndex = elements.allDataItems.findIndex((item) => item.id === dataId);
+    if (currentIndex === -1) {
+      console.warn(`Daten mit ID ${dataId} nicht gefunden.`);
+      currentIndex = 0;
     }
 
-    if (dataItem) {
-      displayDataItem(dataItem);
-    } else {
-      document.querySelector("#data-item-container").innerHTML = "<p>Data item not found.</p>";
-    }
+    displayCurrentItem();
   } catch (error) {
-    console.error("Error fetching data:", error);
-    document.querySelector("#data-item-container").innerHTML = "<p>Error loading data item.</p>";
+    console.error("Fehler beim laden der Daten:", error);
+    document.querySelector("#data-item-container").innerHTML = "<p>Fehler beim laden der Daten.</p>";
   }
 };
 
-// Display data item details based on its type
-const displayDataItem = (dataItem) => {
-  const container = document.querySelector("#data-item-container");
-  container.innerHTML = `
-    <h1 data-translate="title">${dataItem.title}</h1>
-    <img src="${dataItem.thumbnail}" alt="${dataItem.type} thumbnail" class="thumbnail">
-    <p class="description" data-translate="description">${dataItem.description}</p>
-  `;
-
-  const extraFields = document.createElement("div");
-  extraFields.className = "extra-fields";
-
-  // Display additional fields based on data item type
-  switch (dataItem.type) {
-    case "numerical":
-      extraFields.innerHTML = "<h2>Data Points</h2>" +
-        dataItem.dataPoints.map(point => `<div class="data-point"><span>${point.date || point.quarter}</span><span>${point.value}</span></div>`).join("");
-      break;
-    case "text":
-      extraFields.innerHTML = `<h2>Content Type</h2><p>${dataItem.contentType}</p><h2>Keywords</h2><p>${dataItem.keywords.join(", ")}</p>`;
-      break;
-    case "image":
-      extraFields.innerHTML = `<h2>Full Image</h2><img src="${dataItem.imageUrl}" alt="Full Image" class="thumbnail"><h2>Annotations</h2><p>${dataItem.annotations.join(", ")}</p>`;
-      break;
-    case "video":
-      extraFields.innerHTML = `<h2>Video</h2><video src="${dataItem.videoUrl}" controls width="100%"></video><h2>Duration</h2><p>${dataItem.duration}</p>`;
-      break;
-    case "ai_result":
-      extraFields.innerHTML = `<h2>Model Type</h2><p>${dataItem.modelType}</p><h2>Results</h2><pre>${JSON.stringify(dataItem.results, null, 2)}</pre>`;
-      break;
+// Daten laden nach der Index
+const displayCurrentItem = () => {
+  const dataItem = elements.allDataItems[currentIndex];
+  if (dataItem) {
+    render.renderDataItemDetails(dataItem);
+  } else {
+    document.querySelector("#data-item-container").innerHTML = "<p>Daten nicht gefunden.</p>";
   }
-
-  container.appendChild(extraFields);
 };
+
+// Button handler
+const goToNextItem = () => {
+  currentIndex = (currentIndex + 1) % elements.allDataItems.length;
+  displayCurrentItem();
+};
+
+// Button handler
+const goToPreviousItem = () => {
+  currentIndex = (currentIndex - 1 + elements.allDataItems.length) % elements.allDataItems.length;
+  displayCurrentItem();
+};
+
+// Event Listener hinzufügen
+const appendEventListeners = () => {
+  if (elements.elSelThem) {
+    elements.elSelThem.addEventListener("change", (ev) => switchTheme(ev.target.value));
+  }
+  if (elements.elSelLang) {
+    elements.elSelLang.addEventListener("change", (ev) => switchLanguage(ev.target.value));
+  }
+  if (elements.nextButton) {
+    elements.nextButton.addEventListener("click", goToNextItem);
+  }
+  if (elements.prevButton) {
+    elements.prevButton.addEventListener("click", goToPreviousItem);
+  }
+  if (elements.backButton) {
+    elements.backButton.addEventListener("click", navigateBackToList);
+  }
+};
+
+// Theme ändern
+const switchTheme = (theme) => {
+  document.documentElement.className = theme;
+  localStorage.setItem("selectedTheme", theme);
+};
+
+// Sparache ändern
+const switchLanguage = async (lang) => {
+  localStorage.setItem("selectedLanguage", lang);
+  const translations = await fetch(`languages/${lang}.json`).then((res) => res.json());
+
+  for (const el of document.querySelectorAll("[data-translate]")) {
+    const key = el.getAttribute("data-translate");
+    if (translations[key]) {
+      el.textContent = translations[key];
+    }
+  }
+};
+
+// Anwendung initializieren
+const init = () => {
+  domMapping();
+  appendEventListeners();
+  fetchDataItems();
+};
+
+// Anwendung starten
+init();

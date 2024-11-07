@@ -1,8 +1,9 @@
 "use strict";
 
-// KONSTANTEN / VARIABLEN
-const elements = {};
+import render from "./render.js";
+import settings, { elements } from "./settings.js";
 
+// KONSTANTEN / VARIABLEN
 elements.allDataItems = [];
 elements.originalOrder = [];
 elements.sortState = "asc";
@@ -16,72 +17,33 @@ const domMapping = () => {
   elements.inputSelTitl = document.querySelector("#title-search");
 };
 
-const renderCards = (dataItems) => {
-  const container = document.querySelector("#data-cards-container");
-
-  if (!container) {
-    console.error(
-      "Error: data-cards-container element not found in the document."
-    );
-    return;
-  }
-
-  container.innerHTML = ""; // Clear existing content
-
-  dataItems.forEach((item) => {
-    // Create card elements
-    const card = document.createElement("div");
-    card.className = "data-card";
-    card.onclick = () => navigateToDetailPage(item.id); // Navigate to detail page on click
-
-    const thumbnail = document.createElement("div");
-    thumbnail.className = "thumbnail";
-
-    const img = document.createElement("img");
-    img.src = item.thumbnail;
-    img.alt = `${item.type} thumbnail`;
-    img.className = "thumbnail-img";
-    thumbnail.appendChild(img);
-
-    const content = document.createElement("div");
-    content.className = "content";
-
-    const title = document.createElement("h3");
-    title.className = "data-title";
-    title.textContent = item.title;
-
-    const description = document.createElement("p");
-    description.className = "data-description";
-    description.textContent = item.description;
-
-    // Append elements to card
-    content.appendChild(title);
-    content.appendChild(description);
-    card.appendChild(thumbnail);
-    card.appendChild(content);
-    container.appendChild(card);
-  });
-};
-
-// Change the Theme as selected
+// Theme ändern
 const switchTheme = (theme) => {
   document.documentElement.className = theme;
   localStorage.setItem("selectedTheme", theme);
 };
 
-// Language Switching and Translation
+// Sparache ändern
 const switchLanguage = async (lang) => {
   localStorage.setItem("selectedLanguage", lang);
   const translations = await fetch(`languages/${lang}.json`).then((res) =>
     res.json()
   );
 
-  document.querySelectorAll("[data-translate]").forEach((el) => {
+  const elements = document.querySelectorAll("[data-translate]");
+  for (const el of elements) {
     const key = el.getAttribute("data-translate");
-    if (translations[key]) el.textContent = translations[key];
-  });
+    if (translations[key]) {
+      if (el.tagName === "INPUT" && el.placeholder) {
+        el.placeholder = translations[key];
+      } else {
+        el.textContent = translations[key];
+      }
+    }
+  }
 };
 
+// JSON Daten laden und an die render Methode übergeben
 const handleLoadedData = (evt) => {
   const xhr = evt.target;
 
@@ -89,18 +51,20 @@ const handleLoadedData = (evt) => {
     const data = JSON.parse(xhr.responseText);
     elements.allDataItems = data.dataItems;
     elements.originalOrder = [...elements.allDataItems];
-    renderCards(elements.allDataItems);
+    render.renderCards(elements.allDataItems, navigateToDetailPage); // Use render module
   } else {
     console.warn(
-      `${xhr.responseURL} could not be loaded. Reason: ${xhr.statusText}`
+      `${xhr.responseURL} kann nicht geladen werden. Status: ${xhr.statusText}`
     );
   }
 };
 
+// Auf die Detail Siche weiterleiten
 const navigateToDetailPage = (dataId) => {
   window.location.href = `detail.html?id=${dataId}`;
 };
 
+// Daten nach Typ filtern und neu rendern
 const filterCards = (evnt) => {
   const selectedType = evnt.target.value;
   const filteredDataItems =
@@ -108,61 +72,62 @@ const filterCards = (evnt) => {
       ? elements.allDataItems
       : elements.allDataItems.filter((item) => item.type === selectedType);
 
-  renderCards(filteredDataItems);
+  render.renderCards(filteredDataItems, navigateToDetailPage);
 };
 
+// Nach Title filtern und neu rendern
 const filterCardsByTitle = (evnt) => {
-  console.log(evnt);
-
   const titleSearch = evnt.target.value.toLowerCase();
   const filteredByTitle = elements.allDataItems.filter((item) =>
     item.title.toLowerCase().includes(titleSearch)
   );
 
-  renderCards(filteredByTitle);
+  render.renderCards(filteredByTitle, navigateToDetailPage);
 };
 
+// Sortier Knopf umschaltenzwischen A-Z, Z-A, und unsortiert
 const toggleSort = () => {
-  // Toggle sort
   if (elements.sortState === "asc") {
     elements.sortState = "desc";
-    elements.elSortButton.textContent = "Sort by Title: Z-A";
+    elements.elSortButton.textContent = "Sortieren nach Title: Z-A";
   } else if (elements.sortState === "desc") {
     elements.sortState = "none";
-    elements.elSortButton.textContent = "Sort by Title: Unsorted";
+    elements.elSortButton.textContent = "Unsortiert";
   } else {
     elements.sortState = "asc";
-    elements.elSortButton.textContent = "Sort by Title: A-Z";
+    elements.elSortButton.textContent = "Sortieren nach Title: A-Z";
   }
 
   applySort();
 };
 
+// Sortieren nach der dem Sortier Wert und neu rendern
 const applySort = () => {
-  let sortedItems = [...elements.allDataItems]; // Create a shallow copy
+  let sortedItems = [...elements.allDataItems];
 
   if (elements.sortState === "asc") {
-    sortedItems.sort((a, b) => a.title.localeCompare(b.title)); // A-Z
+    sortedItems.sort((a, b) => a.title.localeCompare(b.title));
   } else if (elements.sortState === "desc") {
-    sortedItems.sort((a, b) => b.title.localeCompare(a.title)); // Z-A
+    sortedItems.sort((a, b) => b.title.localeCompare(a.title));
   } else {
-    sortedItems = [...elements.originalOrder]; // Reset to original order if "none"
+    sortedItems = [...elements.originalOrder];
   }
 
-  renderCards(sortedItems);
+  render.renderCards(sortedItems, navigateToDetailPage);
 };
 
+// Event Listener hinzufügen
 const appendEventListeners = () => {
   if (elements.elSelfilCrds) {
-    elements.elSelfilCrds.addEventListener("input", filterCards);
+    elements.elSelfilCrds.addEventListener("change", filterCards);
   }
   if (elements.elSelThem) {
-    elements.elSelThem.addEventListener("input", (ev) =>
+    elements.elSelThem.addEventListener("change", (ev) =>
       switchTheme(ev.target.value)
     );
   }
   if (elements.elSelLang) {
-    elements.elSelLang.addEventListener("input", (ev) =>
+    elements.elSelLang.addEventListener("change", (ev) =>
       switchLanguage(ev.target.value)
     );
   }
@@ -174,13 +139,15 @@ const appendEventListeners = () => {
   }
 };
 
+// JSON Daten laden
 const loadJsonDataItems = () => {
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "./assets/data/json/sample-data.json", true);
+  xhr.open("GET", settings.jsonData, true);
   xhr.addEventListener("load", handleLoadedData);
   xhr.send();
 };
 
+// Aus local storage Theme, Sprache laden und aus Json Daten laden
 const loadItems = () => {
   const savedTheme = localStorage.getItem("selectedTheme") || "theme-default";
   const savedLanguage = localStorage.getItem("selectedLanguage") || "en";
@@ -193,11 +160,12 @@ const loadItems = () => {
   }
 };
 
+// Anwendung initializieren
 const init = () => {
   domMapping();
   appendEventListeners();
   window.document.addEventListener("DOMContentLoaded", loadItems);
 };
 
-// Initialize
+// Anwendung starten
 init();

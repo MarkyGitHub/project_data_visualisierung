@@ -4,60 +4,67 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
+   
 
     <link rel="stylesheet" href="./assets/css/main.css" />
+    
   </head>
   <body>
     <header>
-      <!-- Main Content -->
-      <h1 data-translate="dashboardTitle">Dashboard</h1>
+     
+      <h1 data-translate="dashboardTitle">Visualisierungstafel</h1>
     </header>
     <main>
-      <!-- Theme and Language Selectors -->
+     <!-- Theme auswählen -->
       <div class="selectors">
+        <label for="theme-selector">Theme:</label>
         <select id="themeSelector">
-          <option value="theme-default">Default</option>
-          <option value="theme-dark">Dark</option>
-          <option value="theme-light">Light</option>
-          <option value="theme-minimal">Minimal</option>
-          <option value="theme-borderless">Borderless</option>
+          <option value="theme-default">Standard</option>
+          <option value="theme-dark">Dunkel</option>
+          <option value="theme-light">Hell</option>
+          <option value="theme-minimal">Minimum</option>
+          <option value="theme-borderless">Ohne Ränder</option>
           <option value="theme-bootstrap">Bootstrap 4</option>
           <option value="theme-wordpress">WordPress</option>
         </select>
 
+         <!-- Sprache auswählen -->
+         <label for="language-selector">Sprache:</label>
         <select id="languageSelector">
-          <option value="en">English</option>
+          <option value="en">Englisch</option>
           <option value="de">Deutsch</option>
           <option value="es">Español</option>
           <option value="fr">Français</option>
         </select>
       </div>
       <br /><br />
-      <!-- Filter Dropdown -->
-      <label for="type-filter">Filter by Type:</label>
+
+      <!-- Filtern nach Typ -->
+      <label for="type-filter">Filtern nach Typ:</label>
       <select id="type-filter">
-        <option value="all">All</option>
-        <option value="numerical">Numerical</option>
+        <option value="all">Alle</option>
+        <option value="numerical">Numerische</option>
         <option value="text">Text</option>
         <option value="image">Image</option>
         <option value="video">Video</option>
-        <option value="ai_result">AI Result</option>
+        <option value="ai_result">AI Ergenbis</option>
       </select>
 
-      <!-- Title Search Input -->
-      <label for="title-search">Search by Title:</label>
+       <!-- Suchen nach Titel -->
+      <label for="title-search">Suchen nach Titel:</label>
       <input
         type="text"
         id="title-search"
-        placeholder="Enter title to search..."
+        placeholder="Such Titel eingeben..."
       />
-      <button id="sort-button" onclick="toggleSort()">
-        Sort by Title: A-Z
-      </button>
+
+       <!-- Alphabetisch sortieren -->
+      <button id="sort-button">Sortieren nach Titel: A-Z</button>
 
       <br />
+       <!--Liste der Daten hier dargestellen -->
       <div id="data-cards-container" class="data-grid">
-        <!-- Cards will be dynamically inserted here by JavaScript -->
+        
       </div>
     </main>
     <footer>
@@ -65,6 +72,6 @@
         Add New Visualization
       </button>
     </footer>
-    <script src="./assets/js/index.js"></script>
+    <script type="module" src="./assets/js/index.js"></script>
   </body>
 </html>

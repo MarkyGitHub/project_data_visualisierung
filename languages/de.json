@@ -1,6 +1,38 @@
 {
-    "dashboardTitle": "Visualisierungstafel",
-    "addVisualizationButton": "Neue Visualisierung hinzufügen",
-    "dashboardDetail": "Detail Datenansicht"
-  }
+  "dashboardTitle": "Visualisierungstafel",
+  "addVisualizationButton": "Neue Visualisierung hinzufügen",
+  "dashboardDetail": "Datenansicht",
+  "description": "Beschreibung",
+  "source-link": "Zur Webquelle",
+  "backButton": "Zurück zur Visualisierungstafel",
+  "previousButton": "Vorherige",
+  "nextButton": "Nächste",
   
+  "themeSelector": "Thema auswählen",
+  "themeDefault": "Standard",
+  "themeDark": "Dunkel",
+  "themeLight": "Hell",
+  "themeMinimal": "Minimal",
+  "themeBorderless": "Randlos",
+  "themeBootstrap": "Bootstrap 4",
+  "themeWordpress": "WordPress",
+  
+  "languageSelector": "Sprache auswählen",
+  "langEnglish": "Englisch",
+  "langGerman": "Deutsch",
+  "langSpanish": "Spanisch",
+  "langFrench": "Französisch",
+  
+  "filterLabel": "Nach Typ filtern:",
+  "filterType": "Filtern",
+  "filterAll": "Alle",
+  "filterNumerical": "Numerisch",
+  "filterText": "Text",
+  "filterImage": "Bild",
+  "filterVideo": "Video",
+  "filterAIResult": "KI-Ergebnis",
+  
+  "searchLabel": "Nach Titel suchen:",
+  "searchPlaceholder": "Titel zum Suchen eingeben...",
+  "sortButton": "Nach Titel sortieren: A-Z"
+}

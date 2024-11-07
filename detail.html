@@ -4,43 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Item Details</title>
+
     <link rel="stylesheet" href="/assets/css/main.css" />
     <link rel="stylesheet" href="/assets/css/detail.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <header>
-      <!-- Main Content -->
-      <h1 data-translate="dashboardDetail">Dashboard</h1>
+      <h1 data-translate="dashboardDetail">Datenansicht</h1>
     </header>
     <main>
-      <!-- Language and Theme Selectors -->
-      <label for="language-selector">Language:</label>
-      <select id="language-selector" onchange="switchLanguage(this.value)">
-        <option value="en">English</option>
-        <option value="de">German</option>
-        <option value="fr">French</option>
-        <option value="es">Spanish</option>
-      </select>
+      <!-- Theme auswählen -->
+      <div class="selectors">
+        <label for="theme-selector">Theme:</label>
+        <select id="themeSelector">
+          <option value="theme-default">Standard</option>
+          <option value="theme-dark">Dunkel</option>
+          <option value="theme-light">Hell</option>
+          <option value="theme-minimal">Minimum</option>
+          <option value="theme-borderless">Ohne Ränder</option>
+          <option value="theme-bootstrap">Bootstrap 4</option>
+          <option value="theme-wordpress">WordPress</option>
+        </select>
 
-      <label for="theme-selector">Theme:</label>
-      <select id="theme-selector" onchange="switchTheme(this.value)">
-        <option value="theme-default">Default</option>
-        <option value="theme-dark">Dark</option>
-        <option value="theme-light">Light</option>
-        <option value="theme-minimal">Minimal</option>
-      </select>
-      <br /><br />
-      <!-- Detail Container -->
-      <div class="data-item-container" id="data-item-container">
-        <!-- Content will be dynamically populated by JavaScript -->
+         <!-- Sprache auswählen -->
+         <label for="language-selector">Sprache:</label>
+        <select id="languageSelector">
+          <option value="en">Englisch</option>
+          <option value="de">Deutsch</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
       </div>
+      <br /><br />
+      <button id="back-to-list" class="back-button" data-translate="backButton">
+        Zurück zur Visualisierungstafel
+      </button>
+      <br /><br />
+      <!--Liste der Daten werden hier dargestellt -->
+      <div class="data-item-container" id="data-item-container"></div>
     </main>
 
-    <footer></footer>
+    <footer>
+      <div class="navigation-buttons">
+        <button id="prev-button" data-translate="previousButton">
+          Vorherige
+        </button>
+        <button id="next-button" data-translate="nextButton">Nächste</button>
+      </div>
+    </footer>
 
-    <script src="/assets/js/index.js"></script>
-    <!-- Language and Theme functions -->
-    <script src="/assets/js/detail.js"></script>
-    <!-- Detail page script -->
+    <script type="module" src="/assets/js/index.js"></script>
+    <script type="module" src="/assets/js/detail.js"></script>
   </body>
 </html>

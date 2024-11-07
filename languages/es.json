@@ -1,6 +1,38 @@
 {
-    "dashboardTitle": "Tablero de Visualización",
-    "addVisualizationButton": "Agregar Nueva Visualización",
-    "dashboardDetail": "Detail Datenansicht"
-  }
-  
+  "dashboardTitle": "Tablero",
+  "addVisualizationButton": "Agregar Nueva Visualización",
+  "dashboardDetail": "Vista de Datos",
+  "description": "Descripción",
+  "source-link": "Ver Fuente",
+  "backButton": "Volver al Tablero",
+  "previousButton": "Anterior",
+  "nextButton": "Siguiente",
+
+  "themeSelector": "Seleccionar Tema",
+  "themeDefault": "Predeterminado",
+  "themeDark": "Oscuro",
+  "themeLight": "Claro",
+  "themeMinimal": "Minimalista",
+  "themeBorderless": "Sin Bordes",
+  "themeBootstrap": "Bootstrap 4",
+  "themeWordpress": "WordPress",
+
+  "languageSelector": "Seleccionar Idioma",
+  "langEnglish": "Inglés",
+  "langGerman": "Alemán",
+  "langSpanish": "Español",
+  "langFrench": "Francés",
+
+  "filterLabel": "Filtrar por Tipo:",
+  "filterType": "Filtrar",
+  "filterAll": "Todos",
+  "filterNumerical": "Numérico",
+  "filterText": "Texto",
+  "filterImage": "Imagen",
+  "filterVideo": "Video",
+  "filterAIResult": "Resultado de IA",
+
+  "searchLabel": "Buscar por Título:",
+  "searchPlaceholder": "Ingrese título para buscar...",
+  "sortButton": "Ordenar por Título: A-Z"
+}

@@ -3,17 +3,17 @@
       {
         "id": 1,
         "type": "numerical",
-        "title": "Monthly Sales Trends",
-        "description": "Sales performance over the past year",
+        "title": "Website Traffic Over Time",
+        "description": "Traffic data showing daily visitors over the last quarter",
         "dataPoints": [
-          { "date": "2023-01", "value": 2000 },
-          { "date": "2023-02", "value": 2200 },
-          { "date": "2023-03", "value": 1800 },
-          { "date": "2023-04", "value": 2500 }
+          { "date": "2023-07-01", "value": 1500 },
+          { "date": "2023-07-02", "value": 1600 },
+          { "date": "2023-07-03", "value": 1700 },
+          { "date": "2023-07-04", "value": 1750 }
         ],
-        "visualizationType": "line_chart",
-        "sourceUrl": "https://example.com/sales-data",
-        "thumbnail": "https://picsum.photos/id/1011/300/200"
+        "visualizationType": "bar_chart",
+        "sourceUrl": "https://example.com/traffic-data",
+        "thumbnail": "./assets/images/thumb_vi5.png"
       },
       {
         "id": 2,
@@ -30,20 +30,20 @@
         "type": "image",
         "title": "Product Image - Model X",
         "description": "High-resolution image of Model X in black color",
-        "imageUrl": "https://picsum.photos/id/1013/600/400",
+        "imageUrl": "https://i.pinimg.com/736x/ad/59/2d/ad592d7a5afb28d8ac2ab8f48019cd22.jpg",
         "annotations": ["high_resolution", "annotated"],
-        "sourceUrl": "https://example.com/product/model-x",
-        "thumbnail": "https://picsum.photos/id/1013/300/200"
+        "sourceUrl": "https://de.pinterest.com/pin/1477812371451693/",
+        "thumbnail": "https://i.pinimg.com/736x/ad/59/2d/ad592d7a5afb28d8ac2ab8f48019cd22.jpg"
       },
       {
         "id": 4,
         "type": "video",
         "title": "Tutorial on Product Usage",
         "description": "A step-by-step guide on using Product X",
-        "videoUrl": "https://example.com/videos/tutorial.mp4",
+        "videoUrl": "https://www.youtube.com/watch?v=746mfQalS48",
         "duration": "10:35",
-        "sourceUrl": "https://example.com/tutorials/product-x",
-        "thumbnail": "https://picsum.photos/id/1014/300/200"
+        "sourceUrl": "https://www.youtube.com/watch?v=746mfQalS48",
+        "thumbnail": "./assets/images/thumb_vi1.png"
       },
       {
         "id": 5,
@@ -59,20 +59,22 @@
         "sourceUrl": "https://example.com/models/sentiment-analysis",
         "thumbnail": "https://picsum.photos/id/1015/300/200"
       },
+      
+      
       {
         "id": 6,
         "type": "numerical",
-        "title": "Website Traffic Over Time",
-        "description": "Traffic data showing daily visitors over the last quarter",
+        "title": "Monthly Sales Trends",
+        "description": "Sales performance over the past year",
         "dataPoints": [
-          { "date": "2023-07-01", "value": 1500 },
-          { "date": "2023-07-02", "value": 1600 },
-          { "date": "2023-07-03", "value": 1700 },
-          { "date": "2023-07-04", "value": 1750 }
+          { "date": "2023-01", "value": 2000 },
+          { "date": "2023-02", "value": 2200 },
+          { "date": "2023-03", "value": 1800 },
+          { "date": "2023-04", "value": 2500 }
         ],
-        "visualizationType": "bar_chart",
-        "sourceUrl": "https://example.com/traffic-data",
-        "thumbnail": "https://picsum.photos/id/1016/300/200"
+        "visualizationType": "line_chart",
+        "sourceUrl": "https://example.com/sales-data",
+        "thumbnail": "./assets/images/thumb_vi4.png"
       },
       {
         "id": 7,
@@ -99,10 +101,10 @@
         "type": "video",
         "title": "Product Unboxing Video",
         "description": "Unboxing and first impressions of the latest product release",
-        "videoUrl": "https://example.com/videos/unboxing.mp4",
+        "videoUrl": "https://www.youtube.com/watch?v=N8tnSiDvl7A",
         "duration": "8:20",
-        "sourceUrl": "https://example.com/unboxing",
-        "thumbnail": "https://picsum.photos/id/1019/300/200"
+        "sourceUrl": "https://www.youtube.com/watch?v=N8tnSiDvl7A",
+        "thumbnail": "./assets/images/thumb_vi2.png"
       },
       {
         "id": 10,
@@ -130,7 +132,7 @@
         ],
         "visualizationType": "line_chart",
         "sourceUrl": "https://example.com/revenue-data",
-        "thumbnail": "https://picsum.photos/id/1022/300/200"
+        "thumbnail": "./assets/images/thumb_vi6.png"
       },
       {
         "id": 12,
@@ -157,10 +159,10 @@
         "type": "video",
         "title": "How-to Guide for Product Setup",
         "description": "Step-by-step video tutorial for setting up the product",
-        "videoUrl": "https://example.com/videos/setup-guide.mp4",
+        "videoUrl": "https://www.youtube.com/watch?v=AqgVLYpBWG8",
         "duration": "12:45",
-        "sourceUrl": "https://example.com/product-setup",
-        "thumbnail": "https://picsum.photos/id/1025/300/200"
+        "sourceUrl": "https://www.youtube.com/watch?v=AqgVLYpBWG",
+        "thumbnail": "./assets/images/thumb_vi3.png"
       },
       {
         "id": 15,

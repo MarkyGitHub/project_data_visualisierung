@@ -1,6 +1,38 @@
 {
-    "dashboardTitle": "Tableau de Bord des Visualisations",
-    "addVisualizationButton": "Ajouter une Nouvelle visualisation",
-    "dashboardDetail": "Detail Datenansicht"
-  }
-  
+  "dashboardTitle": "Tableau de Bord",
+  "addVisualizationButton": "Ajouter une Nouvelle Visualisation",
+  "dashboardDetail": "Vue des Données",
+  "description": "Description",
+  "source-link": "Voir la Source",
+  "backButton": "Retour au Tableau de Bord",
+  "previousButton": "Précédent",
+  "nextButton": "Suivant",
+
+  "themeSelector": "Sélectionner le Thème",
+  "themeDefault": "Par Défaut",
+  "themeDark": "Sombre",
+  "themeLight": "Clair",
+  "themeMinimal": "Minimaliste",
+  "themeBorderless": "Sans Bordure",
+  "themeBootstrap": "Bootstrap 4",
+  "themeWordpress": "WordPress",
+
+  "languageSelector": "Sélectionner la Langue",
+  "langEnglish": "Anglais",
+  "langGerman": "Allemand",
+  "langSpanish": "Espagnol",
+  "langFrench": "Français",
+
+  "filterLabel": "Filtrer par Type:",
+  "filterType": "Filtrer",
+  "filterAll": "Tous",
+  "filterNumerical": "Numérique",
+  "filterText": "Texte",
+  "filterImage": "Image",
+  "filterVideo": "Vidéo",
+  "filterAIResult": "Résultat IA",
+
+  "searchLabel": "Rechercher par Titre:",
+  "searchPlaceholder": "Entrez le titre pour rechercher...",
+  "sortButton": "Trier par Titre: A-Z"
+}

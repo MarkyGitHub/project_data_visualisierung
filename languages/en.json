@@ -1,6 +1,38 @@
 {
-    "dashboardTitle": "Visualization Dashboard",
-    "addVisualizationButton": "Add New Visualization",
-    "dashboardDetail": "Details of Dashboard item"
-  }
-  
+  "dashboardTitle": "Dashboard",
+  "addVisualizationButton": "Add New Visualization",
+  "dashboardDetail": "Data View",
+  "description": "Description",
+  "source-link": "View Source",
+  "backButton": "Back to Dashboard",
+  "previousButton": "Previous",
+  "nextButton": "Next",
+
+  "themeSelector": "Select Theme",
+  "themeDefault": "Default",
+  "themeDark": "Dark",
+  "themeLight": "Light",
+  "themeMinimal": "Minimal",
+  "themeBorderless": "Borderless",
+  "themeBootstrap": "Bootstrap 4",
+  "themeWordpress": "WordPress",
+
+  "languageSelector": "Select Language",
+  "langEnglish": "English",
+  "langGerman": "German",
+  "langSpanish": "Spanish",
+  "langFrench": "French",
+
+  "filterLabel": "Filter by Type:",
+  "filterType": "Filter",
+  "filterAll": "All",
+  "filterNumerical": "Numerical",
+  "filterText": "Text",
+  "filterImage": "Image",
+  "filterVideo": "Video",
+  "filterAIResult": "AI Result",
+
+  "searchLabel": "Search by Title:",
+  "searchPlaceholder": "Enter title to search...",
+  "sortButton": "Sort by Title: A-Z"
+}

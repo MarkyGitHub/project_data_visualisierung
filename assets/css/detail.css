@@ -1,8 +1,6 @@
-/* detail.css */
-
 body {
   font-family: Arial, sans-serif;
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -12,41 +10,147 @@ body {
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 h1 {
   font-size: 24px;
+  text-align: center;
   margin-top: 0;
-}
-
-.thumbnail {
-  width: 100%;
-  height: auto;
   margin-bottom: 20px;
 }
 
-.description {
-  font-size: 16px;
-  color: #555;
+.main-content {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
-.extra-fields {
+.description-label,
+.annotations-label {
+  font-weight: bold;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.description,
+.annotations-content {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.source-link {
+  font-size: 16px;
+  color: #007bff;
+  text-decoration: none;
+  display: inline-block;
   margin-top: 20px;
 }
 
-.extra-fields h2 {
-  font-size: 20px;
+.source-link:hover {
+  text-decoration: underline;
 }
 
-.extra-fields p,
-.extra-fields pre {
-  font-size: 14px;
-  color: #333;
-}
-
-.data-point {
+.navigation-buttons {
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
-  color: #666;
+  margin-top: 20px;
+}
+
+#prev-button,
+#next-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+#prev-button:hover,
+#next-button:hover {
+  background-color: #0056b3;
+}
+
+.back-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+.sentiment-analysis-container,
+.object-detection-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sentiment-card,
+.object-card {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+.review-text {
+  font-style: italic;
+}
+
+.sentiment-label {
+  font-weight: bold;
+}
+
+.sentiment-label.positive {
+  color: green;
+}
+.sentiment-label.negative {
+  color: red;
+}
+.sentiment-label.neutral {
+  color: gray;
+}
+
+.object-label {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .data-item-container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .description-label,
+  .annotations-label,
+  .description,
+  .annotations-content {
+    font-size: 15px;
+  }
+
+  .source-link {
+    font-size: 15px;
+  }
 }
