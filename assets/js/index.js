@@ -51,7 +51,7 @@ const handleLoadedData = (evt) => {
     const data = JSON.parse(xhr.responseText);
     elements.allDataItems = data.dataItems;
     elements.originalOrder = [...elements.allDataItems];
-    render.renderCards(elements.allDataItems, navigateToDetailPage); // Use render module
+    render.renderCards(elements.allDataItems, navigateToDetailPage);
   } else {
     console.warn(
       `${xhr.responseURL} kann nicht geladen werden. Status: ${xhr.statusText}`

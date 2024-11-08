@@ -50,7 +50,7 @@ const render = {
     container.innerHTML = "";
     for (const item of dataItems) {
       const card = dom.createCardElement(item);
-      card.onclick = () => navigateToDetailPage(item.id);
+      card.addEventListener("click", () => navigateToDetailPage(item.id));
       container.appendChild(card);
     }
   },

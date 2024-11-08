@@ -86,7 +86,7 @@ const switchTheme = (theme) => {
   localStorage.setItem("selectedTheme", theme);
 };
 
-// Sparache ändern
+// Sprache ändern
 const switchLanguage = async (lang) => {
   localStorage.setItem("selectedLanguage", lang);
   const translations = await fetch(`languages/${lang}.json`).then((res) => res.json());

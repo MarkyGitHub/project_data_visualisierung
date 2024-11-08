@@ -44,17 +44,18 @@ const dom = {
   createCardElement(item) {
     const card = dom.create(false, false, "div", null, "data-card");
 
-    const thumbnail = dom.create(false, false, "div", card, "thumbnail");
-    dom.create(
-      false,
-      false,
-      "img",
-      thumbnail,
-      "thumbnail-img",
-      false,
-      item.thumbnail
-    );
-
+    if (item.type != "text") {
+      const thumbnail = dom.create(false, false, "div", card, "thumbnail");
+      dom.create(
+        false,
+        false,
+        "img",
+        thumbnail,
+        "thumbnail-img",
+        false,
+        item.thumbnail
+      );
+    }
     const content = dom.create(false, false, "div", card, "content");
     dom.create(item.title, false, "h3", content, "data-title");
     dom.create(item.description, false, "p", content, "data-description");
@@ -91,24 +92,22 @@ const dom = {
             .join("");
         break;
       case "text":
-        content = `<h2>Content Type</h2><p>${
-          dataItem.contentType
-        }</p><h2>Keywords</h2><p>${dataItem.keywords.join(", ")}</p>`;
+        content = `<h2>Content Type</h2><p>${dataItem.contentType}
+        </p><h2>Keywords</h2><p>${dataItem.keywords.join(", ")}</p>`;
         break;
       case "image":
-        content = `<h2>Full Image</h2><img src="${
-          dataItem.imageUrl
-        }" alt="Full Image" class="thumbnail"><h2>Annotations</h2><p>${dataItem.annotations.join(
+        content = `<h2>Full Image</h2><img src="${dataItem.imageUrl}
+        " alt="Full Image" class="thumbnail"><h2>Annotations</h2><p>${dataItem.annotations.join(
           ", "
         )}</p>`;
         break;
       case "video":
-        content = `<h2>Video</h2><video src="${dataItem.videoUrl}" controls width="100%"></video><h2>Duration</h2><p>${dataItem.duration}</p>`;
+        content = `<h2>Video</h2><video src="${dataItem.videoUrl}
+        " controls width="100%"></video><h2>Duration</h2><p>${dataItem.duration}</p>`;
         break;
       case "ai_result":
-        content = `<h2>Model Type</h2><p>${
-          dataItem.modelType
-        }</p><h2>Results</h2><pre>${JSON.stringify(
+        content = `<h2>Model Type</h2><p>${dataItem.modelType}
+        </p><h2>Results</h2><pre>${JSON.stringify(
           dataItem.results,
           null,
           2
