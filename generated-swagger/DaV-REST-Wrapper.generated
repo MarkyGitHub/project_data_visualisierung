@@ -1,0 +1,864 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "DaV-REST-Wrapper",
+    "description" : "Diese Anwendung bietet diverse Schnittstellen um Daten aus dem DaV abzurufen sowie die DaV-Daten um Daten aus einer DB anzureichern",
+    "version" : "1.0"
+  },
+  "servers" : [ {
+    "url" : "http://10.50.6.111:8502",
+    "description" : "Generated server url"
+  } ],
+  "paths" : {
+    "/api/simulations/{id}" : {
+      "get" : {
+        "tags" : [ "simulation-controller" ],
+        "operationId" : "getSimulation",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Simulation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "simulation-controller" ],
+        "operationId" : "updateSimulation",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Simulation"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Simulation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "simulation-controller" ],
+        "operationId" : "deleteSimulation",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/api/davData/parameter" : {
+      "get" : {
+        "tags" : [ "dav-data-controller" ],
+        "operationId" : "getParameterData",
+        "parameters" : [ {
+          "name" : "obj",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "atg",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "dav-data-controller" ],
+        "operationId" : "editParameterData",
+        "parameters" : [ {
+          "name" : "obj",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "atg",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "asp",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "simulationVariant",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32",
+            "default" : 0
+          }
+        }, {
+          "name" : "senderRole",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "SENDER", "SOURCE" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/connect/{endpoint}/{method}" : {
+      "post" : {
+        "tags" : [ "endpoint-controller" ],
+        "operationId" : "serveEndpoint",
+        "parameters" : [ {
+          "name" : "endpoint",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "method",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json;charset=UTF-8" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/simulations" : {
+      "get" : {
+        "tags" : [ "simulation-controller" ],
+        "operationId" : "getAllSimulations",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Simulation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "simulation-controller" ],
+        "operationId" : "createSimulation",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Simulation"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Simulation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/davData/current" : {
+      "get" : {
+        "tags" : [ "dav-data-controller" ],
+        "operationId" : "getCurrentData",
+        "parameters" : [ {
+          "name" : "obj",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "atg",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "asp",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "dav-data-controller" ],
+        "operationId" : "publishCurrentData",
+        "parameters" : [ {
+          "name" : "obj",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "atg",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "asp",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "simulationVariant",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32",
+            "default" : 0
+          }
+        }, {
+          "name" : "senderRole",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "SENDER", "SOURCE" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/api/simulations/{id}/stop" : {
+      "patch" : {
+        "tags" : [ "simulation-controller" ],
+        "operationId" : "stopSimulationById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/simulations/{id}/start" : {
+      "patch" : {
+        "tags" : [ "simulation-controller" ],
+        "operationId" : "startSimulationById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/systemObjects/objects/{pid}" : {
+      "get" : {
+        "tags" : [ "system-object-controller" ],
+        "operationId" : "getSystemObjectByPid",
+        "parameters" : [ {
+          "name" : "pid",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SystemObjectDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/systemObjects/objects/type/{typePid}" : {
+      "get" : {
+        "tags" : [ "system-object-controller" ],
+        "operationId" : "getSystemObjectsByTypePid",
+        "parameters" : [ {
+          "name" : "typePid",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/SystemObjectDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/objectTypes/{pid}" : {
+      "get" : {
+        "tags" : [ "system-object-type-controller" ],
+        "operationId" : "getSystemObjectTypeByPid",
+        "parameters" : [ {
+          "name" : "pid",
+          "in" : "path",
+          "description" : "PID of the type object.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "typ.anzeigeQuerschnitt"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SystemObjectTypeDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/objectTypes/" : {
+      "get" : {
+        "tags" : [ "system-object-type-controller" ],
+        "operationId" : "getAllSystemObjects",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/SystemObjectTypeDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Simulation" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "stepIntervalInSec" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "currentStep" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "currentCycle" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "cyclesCount" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "status" : {
+            "type" : "string",
+            "enum" : [ "RUNNING", "STOPPED", "ERROR", "IDLE", "FINISHED" ]
+          },
+          "steps" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/SimulationStep"
+            }
+          },
+          "error" : {
+            "type" : "string"
+          },
+          "lastStart" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "lastStop" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "durationInSec" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }
+      },
+      "SimulationStep" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "positionInCycle" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "simulation" : {
+            "$ref" : "#/components/schemas/Simulation"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "dataRecord" : {
+            "$ref" : "#/components/schemas/SimulationStepDataRecord"
+          }
+        }
+      },
+      "SimulationStepDataRecord" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "attributeGroupPid" : {
+            "type" : "string"
+          },
+          "aspectPid" : {
+            "type" : "string"
+          },
+          "systemObjectPid" : {
+            "type" : "string"
+          },
+          "senderRole" : {
+            "type" : "string",
+            "enum" : [ "SENDER", "SOURCE" ]
+          },
+          "simulationVariant" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "serializedData" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ConfigurationAreaDto" : {
+        "type" : "object",
+        "properties" : {
+          "pid" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "activeVersion" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "kvPid" : {
+            "type" : "string"
+          }
+        }
+      },
+      "SystemObjectDto" : {
+        "type" : "object",
+        "properties" : {
+          "pid" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "typePid" : {
+            "type" : "string"
+          },
+          "typeName" : {
+            "type" : "string"
+          },
+          "configurationArea" : {
+            "$ref" : "#/components/schemas/ConfigurationAreaDto"
+          },
+          "gridDisplayName" : {
+            "type" : "string"
+          }
+        }
+      },
+      "AspectDto" : {
+        "type" : "object",
+        "properties" : {
+          "pid" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "typePid" : {
+            "type" : "string"
+          },
+          "typeName" : {
+            "type" : "string"
+          },
+          "configurationArea" : {
+            "$ref" : "#/components/schemas/ConfigurationAreaDto"
+          },
+          "gridDisplayName" : {
+            "type" : "string"
+          }
+        }
+      },
+      "AttributGroupDto" : {
+        "type" : "object",
+        "properties" : {
+          "pid" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "typePid" : {
+            "type" : "string"
+          },
+          "typeName" : {
+            "type" : "string"
+          },
+          "configurationArea" : {
+            "$ref" : "#/components/schemas/ConfigurationAreaDto"
+          },
+          "attributes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/AttributeDto"
+            }
+          },
+          "aspects" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/AspectDto"
+            }
+          },
+          "parameter" : {
+            "type" : "boolean"
+          },
+          "recommendedDavAction" : {
+            "type" : "string",
+            "enum" : [ "CURRENT_DATA", "EDIT_PARAM", "VIEW_CONFIG" ]
+          },
+          "configuration" : {
+            "type" : "boolean"
+          },
+          "gridDisplayName" : {
+            "type" : "string"
+          }
+        }
+      },
+      "AttributeDto" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "position" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "isCountLimited" : {
+            "type" : "boolean"
+          },
+          "isCountVariable" : {
+            "type" : "boolean"
+          },
+          "maxCount" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "isArray" : {
+            "type" : "boolean"
+          },
+          "type" : {
+            "type" : "string",
+            "enum" : [ "DOUBLE", "INTEGER", "REFERENCE", "STRING", "TIME", "ATTRIBUTE_LIST" ]
+          },
+          "typeSpecificProperties" : {
+            "$ref" : "#/components/schemas/TypedAttributeDto"
+          }
+        }
+      },
+      "SystemObjectTypeDto" : {
+        "type" : "object",
+        "properties" : {
+          "pid" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "typePid" : {
+            "type" : "string"
+          },
+          "typeName" : {
+            "type" : "string"
+          },
+          "configurationArea" : {
+            "$ref" : "#/components/schemas/ConfigurationAreaDto"
+          },
+          "attributeGroups" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/AttributGroupDto"
+            }
+          },
+          "gridDisplayName" : {
+            "type" : "string"
+          }
+        }
+      },
+      "TypedAttributeDto" : {
+        "type" : "object"
+      }
+    }
+  }
+}
